@@ -1,0 +1,14 @@
+#!/bin/bash -e
+#
+# S2I assemble script for the 'centos' image.
+# The 'assemble' script builds your application source so that it is ready to run.
+#
+# For more information refer to the documentation:
+#       https://github.com/openshift/source-to-image/blob/master/docs/builder_image.md
+#
+
+echo "---> Installing application source..."
+# 该过程将目标代码，拷贝到指定目录
+cp -Rf /tmp/src/. /var/www/html
+# 赋予新拷贝文件的权限
+chown -R apache:apache /var/www/html/
